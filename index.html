@@ -176,24 +176,18 @@
 <script>
 function sendEmail() {
     var name = document.getElementById('name').value;
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('phone').value;
-        var message = document.getElementById('message').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var message = document.getElementById('message').value;
 
-        var subject = "Contact from Portfolio: " + name;
-        var body = "Message:\n" + message + "\n\nRegards,\n\nName: " + name + "\nPhone: " + phone + "\nEmail: " + email;
+    var subject = encodeURIComponent("Contact from Portfolio: " + name);
+    var body = encodeURIComponent(message + "\n\nRegards,\n\nName: " + name + "\nPhone: " + phone + "\nEmail: " + email);
 
-        var mailtoLink = "mailto:youremail@gmail.com"
-            + "?subject=" + encodeURIComponent(subject)
-            + "&body=" + encodeURIComponent(body);
-        event.preventDefault();
-        if (typeof navigator.mailto !== 'undefined') {
-            navigator.mailto.setBody(body);
-            navigator.mailto.setSubject(subject);
-            navigator.mailto.send();
-        } else {
-            alert("Please install the Gmail app to send emails directly.");
-        }
+    var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=akshaytank0205@gmail.com&su=" + subject + "&body=" + body;
+    
+    window.open(gmailUrl, '_blank');
+
+    return false;
 }
 </script>
 
