@@ -180,12 +180,14 @@ function sendEmail() {
     var phone = document.getElementById('phone').value;
     var message = document.getElementById('message').value;
 
-    var subject = encodeURIComponent("Contact from Portfolio: " + name);
-    var body = encodeURIComponent(message + "\n\nRegards,\n\nName: " + name + "\nPhone: " + phone + "\nEmail: " + email);
+    var subject = "Contact from Portfolio: " + name;
+    var body = "Message:\n" + message + "\n\nRegards,\n\nName: " + name + "\nPhone: " + phone + "\nEmail: " + email;
 
-    var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=akshaytank0205@gmail.com&su=" + subject + "&body=" + body;
+    var mailtoLink = "mailto:akshaytank0205@gmail.com"
+        + "?subject=" + encodeURIComponent(subject)
+        + "&body=" + encodeURIComponent(body);
     
-    window.open(gmailUrl, '_blank');
+    window.location.href = mailtoLink;
 
     return false;
 }
